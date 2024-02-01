@@ -6,13 +6,13 @@
 #    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 12:57:29 by jose              #+#    #+#              #
-#    Updated: 2024/01/31 14:00:58 by jose             ###   ########.fr        #
+#    Updated: 2024/02/01 09:26:29 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPP = c++
 
-CPP_FLAGS = -Wall -Wextra -Werror -std=c++98 -c
+CPP_FLAGS = -Wall -Wextra -Werror -std=c++98 -c -g
 
 RM = rm -f
 

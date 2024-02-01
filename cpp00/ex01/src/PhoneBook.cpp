@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:17:21 by jose              #+#    #+#             */
-/*   Updated: 2024/02/01 02:43:52 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:25:13 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void PhoneBook::ft_add_contact(void)
 	else
 	{
 		this->_book[this->_the_oldest] = Contact(tab[0], tab[1], tab[2], tab[3], tab[4]);
-		this->_the_oldest++;
-		if (this->_the_oldest == 8)
+		if (++this->_the_oldest == 8)
 			this->_the_oldest = 0;
 	}
 }
@@ -70,13 +69,13 @@ void	PhoneBook::ft_display_contact(int i, Contact cont) const
 			get_name = &Contact::get_last_name;
 		else
 			get_name = &Contact::get_nickname;
-		for (std::size_t j = 0; 9 > j + (cont.*get_name)().size(); j++)
+		for (std::size_t j = 0; 10 > j + (cont.*get_name)().size(); j++)
 			std::cout << " ";
-		if ((cont.*get_name)().size() < 10)
+		if ((cont.*get_name)().size() < 11)
 			std::cout << (cont.*get_name)();
 		else
 		{
-			std::cout << (cont.*get_name)().substr(0, 8);
+			std::cout << (cont.*get_name)().substr(0, 9);
 			std::cout << ".";
 		}
 		if (k != 2)
@@ -116,7 +115,7 @@ int PhoneBook::ft_make_choice(void) const
 	while (choice < 1 || choice > this->_book_size)
 	{
 		std::cin.clear();
-		std::cin.ignore();
+		while (std::cin.get() != '\n');
 		if (++bad_choice == 3)
 			break ;
 		std::cin >> choice;
