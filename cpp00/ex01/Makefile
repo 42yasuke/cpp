@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/31 11:59:48 by jose              #+#    #+#              #
-#    Updated: 2024/01/31 13:11:46 by jose             ###   ########.fr        #
+#    Created: 2024/01/31 12:57:29 by jose              #+#    #+#              #
+#    Updated: 2024/01/31 14:00:58 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,20 @@ CPP_FLAGS = -Wall -Wextra -Werror -std=c++98 -c
 
 RM = rm -f
 
-SRC = megaphone.cpp
+INC = -I includes/
+
+CPP_FILES =	main.cpp Contact.cpp PhoneBook.cpp
+
+SRC = $(addprefix src/, $(CPP_FILES))
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = megaphone
+NAME = phonebook
 
 all : $(NAME)
 
 %.o : %.cpp
-			$(CPP) $(CPP_FLAGS) $< -o $@
+			$(CPP) $(CPP_FLAGS) -c $(INC) $< -o $@
 
 $(NAME) : $(OBJ)
 			$(CPP) $(OBJ) -o $(NAME)
