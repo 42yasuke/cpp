@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:14:29 by jose              #+#    #+#             */
-/*   Updated: 2024/02/01 00:26:51 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:31:41 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ std::string ft_choose_between(void)
 int	main(void)
 {
 	PhoneBook	phone;
-
 	std::string choice;
 	while (true)
 	{

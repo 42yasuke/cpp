@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:15:27 by jose              #+#    #+#             */
-/*   Updated: 2024/01/31 21:21:57 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/01 13:26:17 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ Contact::Contact()
 	this->_nickname = "";
 }
 
-Contact::Contact(std::string fname, std::string lname, std::string nname, std::string pnumber, std::string dsecret)
+Contact::Contact(std::string fname, std::string lname, std::string nname,
+	std::string pnumber, std::string dsecret)
 {
 	this->_first_name = fname;
 	this->_last_name = lname;
