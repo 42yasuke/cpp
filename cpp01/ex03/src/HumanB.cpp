@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 12:04:30 by jose              #+#    #+#             */
-/*   Updated: 2024/02/02 15:56:45 by jose             ###   ########.fr       */
+/*   Created: 2024/02/01 14:21:06 by jose              #+#    #+#             */
+/*   Updated: 2024/02/02 16:58:16 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstring>
+#include "HumanB.hpp"
 
-int	main(int ac, char** av)
+HumanB::HumanB(std::string n)
 {
-	if (ac > 1)
-	{
-		for (int i = 1; i < ac; i++)
-		{
-			for (size_t j = 0; j < strlen(av[i]); j++)
-				av[i][j] = toupper(av[i][j]);
-			std::cout << av[i];
-		}
-		std::cout << std::endl;
-	}
-	else if (ac)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	return (0);
+	this->name = n;
+	this->arme = NULL;
+}
+HumanB::~HumanB()
+{
+	std::cout << "humanB " << this->name << " is destroyed" << std::endl;
+}
+void	HumanB::attack(void)
+{
+	std::cout << this->name << " attacks with their " << this->arme->getType() << std::endl;
+}
+
+void	HumanB::setWeapon(Weapon &club)
+{
+	this->arme = &club;
 }
