@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
+#    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 03:12:56 by jose              #+#    #+#              #
-#    Updated: 2024/02/06 03:13:22 by jose             ###   ########.fr        #
+#    Updated: 2024/02/06 14:11:57 by jralph           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = main.cpp Harl.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = exec
+NAME = harl
 
 all : $(NAME)
 

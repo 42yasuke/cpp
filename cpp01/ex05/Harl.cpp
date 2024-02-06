@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 03:14:03 by jose              #+#    #+#             */
-/*   Updated: 2024/02/06 11:22:08 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/06 14:15:56 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	Harl::error(void)
 
 void	Harl::complain(std::string level)
 {
-	void	*(Harl::f[4])(void) = {&debug, &info, &warning, &error};
-	for (int i = 0; i < level.size(); i++)
-		f[i]();
+	void	(Harl::*f[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	for (int i = 0; i < (int)level.size(); i++)
+		(this->*f[i])();
 }
