@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 03:14:18 by jose              #+#    #+#             */
-/*   Updated: 2024/02/06 14:14:39 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/06 14:27:25 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <iostream>
 #include <string>
-#include <cstring>
 
 class Harl
 {
