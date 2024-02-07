@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:21:06 by jose              #+#    #+#             */
-/*   Updated: 2024/02/02 16:58:16 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/07 20:32:57 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ HumanB::~HumanB()
 }
 void	HumanB::attack(void)
 {
-	std::cout << this->name << " attacks with their " << this->arme->getType() << std::endl;
+	if (this->arme)
+		std::cout << this->name << " attacks with their " << this->arme->getType() << std::endl;
 }
 
 void	HumanB::setWeapon(Weapon &club)
