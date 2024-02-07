@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:43:53 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/07 00:06:35 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/07 18:26:34 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 Fixed::Fixed()
 {
-	this->_n = 0;
 	std::cout<<"Default constructor called"<<std::endl;
+	this->setRawBits(0);
 }
 
 Fixed::~Fixed()
