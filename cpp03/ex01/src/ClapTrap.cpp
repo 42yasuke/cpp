@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:52:35 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/08 18:16:21 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/08 19:36:31 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ ClapTrap::ClapTrap()
 	this->Energy = 10;
 	this->Hit = 10;
 	this->Attack = 0;
+	this->MaxHit = 10;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout<<"Destructo ClapTrap called"<<std::endl;
+	std::cout<<"Destructor ClapTrap called"<<std::endl;
 }
 
 ClapTrap::ClapTrap(std::string n)
@@ -33,6 +34,7 @@ ClapTrap::ClapTrap(std::string n)
 	this->Energy = 10;
 	this->Hit = 10;
 	this->Attack = 0;
+	this->MaxHit = 10;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &clap)

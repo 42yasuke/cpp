@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:35:45 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/08 18:22:11 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/08 19:36:07 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 class ClapTrap
 {
-	private:
+	protected:
 		std::string	Name;
 		int	Hit;
 		int	Energy;
 		int	Attack;
-		static int const	MaxHit = 10;
+		int	MaxHit;
 	public :
 		ClapTrap();
 		ClapTrap(std::string n);
