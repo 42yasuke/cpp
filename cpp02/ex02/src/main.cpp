@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:43:22 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/08 14:34:12 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/08 15:17:46 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int main(void)
 	std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
+
 	std::cout << Fixed::max(a, b) << std::endl;
 
 	return 0;

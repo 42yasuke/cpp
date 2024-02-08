@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:43:53 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/08 14:42:30 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/08 15:16:51 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,8 @@ Fixed	Fixed::operator/(Fixed const &fix)
 {
 	Fixed	res;
 
-	res._n = (this->getRawBits() / fix.getRawBits()) * pow(2, this->fract_number);
+	if (fix.getRawBits())
+		res._n = (this->getRawBits() / fix.getRawBits()) * pow(2, this->fract_number);
 	return (res);
 }
 
