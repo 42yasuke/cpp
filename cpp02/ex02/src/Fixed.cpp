@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:43:53 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/08 14:43:25 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/08 14:42:30 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,3 +75,111 @@ std::ostream	&operator<<(std::ostream &os, Fixed const &fix)
 	return (os);
 }
 
+bool	Fixed::operator<(Fixed const &fix)
+{
+	return (this->getRawBits() < fix.getRawBits());
+}
+
+bool	Fixed::operator>(Fixed const &fix)
+{
+	return (this->getRawBits() > fix.getRawBits());
+}
+
+bool	Fixed::operator==(Fixed const &fix)
+{
+	return (this->getRawBits() == fix.getRawBits());
+}
+
+bool	Fixed::operator!=(Fixed const &fix)
+{
+	return (this->getRawBits() != fix.getRawBits());
+}
+
+bool	Fixed::operator>=(Fixed const &fix)
+{
+	return (this->getRawBits() >= fix.getRawBits());
+}
+
+bool	Fixed::operator<=(Fixed const &fix)
+{
+	return (this->getRawBits() <= fix.getRawBits());
+}
+
+Fixed	Fixed::operator+(Fixed const &fix)
+{
+	return (Fixed(this->getRawBits() + fix.getRawBits()));
+}
+
+Fixed	Fixed::operator-(Fixed const &fix)
+{
+	return (Fixed(this->getRawBits() - fix.getRawBits()));
+}
+
+Fixed	Fixed::operator/(Fixed const &fix)
+{
+	Fixed	res;
+
+	res._n = (this->getRawBits() / fix.getRawBits()) * pow(2, this->fract_number);
+	return (res);
+}
+
+Fixed	Fixed::operator*(Fixed const &fix)
+{
+	Fixed	res;
+
+	res._n = (this->getRawBits() * fix.getRawBits()) / pow(2, this->fract_number);
+	return (res);
+}
+
+Fixed	&Fixed::operator++(void)
+{
+	this->_n += 1;
+	return (*this);
+}
+
+Fixed &Fixed::operator--(void)
+{
+	this->_n -= 1;
+	return (*this);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed tmp(*this);
+
+	(*this)._n--;
+	return (tmp);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed tmp (*this);
+
+	(*this)._n++;
+	return (tmp);
+}
+
+Fixed	&Fixed::min(Fixed &fix1, Fixed &fix2)
+{
+	if (fix1 <= fix2)
+		return (fix1);
+	return (fix2);
+}
+Fixed	const &Fixed::min(Fixed const &fix1, Fixed const &fix2)
+{
+	if (fix1.getRawBits() <= fix2.getRawBits())
+		return (fix1);
+	return (fix2);
+}
+Fixed	&Fixed::max(Fixed &fix1, Fixed &fix2)
+{
+	if (fix1 >= fix2)
+		return (fix1);
+	return (fix2);
+}
+Fixed	const &Fixed::max(Fixed const &fix1, Fixed const &fix2)
+{
+	if (fix1.getRawBits() >= fix2.getRawBits())
+		return (fix1);
+	return (fix2);
+}
