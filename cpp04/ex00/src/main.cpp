@@ -6,31 +6,23 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 21:15:10 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/08 21:15:14 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/09 15:29:24 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "WrongCat.hpp"
 
 int	main(void)
 {
-	ClapTrap	a;
-	ClapTrap	b("Morgan");
-
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	b.takeDamage(3);
-	std::cout << b << std::endl;
-	b.takeDamage(30);
-	std::cout << b << std::endl;
-	b.beRepaired(3);
-	std::cout << b << std::endl;
-	b.attack("Eric");
-	b.attack("Eric");
-	std::cout << b << std::endl;
-	b.attack("Eric");
-	std::cout << b << std::endl;
-	b.beRepaired(6);
-	std::cout << b << std::endl;
-	b.attack("Eric");
+	const Animal *meta = new Animal();
+	const Animal *j = new Dog();
+	const Animal *i = new Cat();
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound(); // will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
+	return (delete meta, delete i, delete i, 0);
 }
