@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 01:56:02 by jose              #+#    #+#             */
-/*   Updated: 2024/02/10 02:07:11 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/10 12:14:49 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ class Character : public ICharacter
 {
 	private:
 		std::string	name;
+		AMateria	(*materials)[4];
 	public:
 		Character();
 		virtual ~Character();
 		Character(Character const &charac);
 		Character	&operator=(Character const &charac);
 		virtual std::string const & getName() const;
+		std::string	const getTypeM(int idx) const
 		virtual void equip(AMateria* m);
 		virtual void unequip(int idx);
 		virtual void use(int idx, ICharacter& target);
