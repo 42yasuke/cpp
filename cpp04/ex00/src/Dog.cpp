@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 21:14:56 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/09 15:19:56 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/10 00:30:29 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Dog::~Dog()
 	std::cout<<"Destructor Dog called"<<std::endl;
 }
 
-Dog::Dog(Dog const &dog)
+Dog::Dog(Dog const &dog) : Animal("Dog")
 {
 	std::cout<<"Constructor Dog by copy called"<<std::endl;
 	*this = dog;

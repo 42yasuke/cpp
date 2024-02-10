@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 21:14:56 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/09 18:20:48 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/10 00:32:00 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Dog::~Dog()
 	delete this->myBrain;
 }
 
-Dog::Dog(Dog const &dog) : myBrain(NULL)
+Dog::Dog(Dog const &dog) : Animal("Dog"), myBrain(NULL)
 {
 	std::cout<<"Constructor Dog by copy called"<<std::endl;
 	*this = dog;

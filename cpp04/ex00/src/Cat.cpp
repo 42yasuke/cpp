@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 21:14:59 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/09 15:19:53 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/10 00:30:48 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Cat::~Cat()
 	std::cout<<"Destructor Cat called"<<std::endl;
 }
 
-Cat::Cat(Cat const &cat)
+Cat::Cat(Cat const &cat) : Animal("Cat")
 {
 	std::cout<<"Constructor Cat by copy called"<<std::endl;
 	*this = cat;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 21:14:54 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/09 15:20:16 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/10 00:24:24 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ WrongCat::~WrongCat()
 	std::cout<<"Destructor WrongCat called"<<std::endl;
 }
 
-WrongCat::WrongCat(WrongCat const &wcat)
+WrongCat::WrongCat(WrongCat const &wcat) : WrongAnimal("WrongCat")
 {
 	std::cout<<"Constructor Cat by copy called"<<std::endl;
 	*this = wcat;
