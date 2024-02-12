@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 01:52:15 by jose              #+#    #+#             */
-/*   Updated: 2024/02/10 12:16:14 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/12 11:51:05 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Character	&Character::operator=(Character const &charac)
 		if (this->materials[i])
 			delete this->materials[i];
 		if (charac.materials[i])
-			this->materials[i] = new AMateria(charac.materials[i].getType());
+			this->materials[i] = charac.materials[i].clone();
 		else
 			this->materials[i] = NULL;
 	}
@@ -61,7 +61,7 @@ std::string	const Character::getTypeM(int idx) const
 
 void	Character::equip(AMateria* m)
 {
-	int	i = -1:
+	int	i = -1;
 	while (++i < 4 && this->materials[i]);
 	if (i == 4)
 		std::cout<<"Character "<<this->getName()<<" cannot equip more Materia (epuipement already full)"<<std::endl;
@@ -93,8 +93,6 @@ std::ostream 	&operator<<(std::ostream &os, Character const &charac)
 {
 	os<<charac.getName()<<" [ ";
 	for (int i = 0; i < 4; i++)
-	{
 		os<<charac.getTypeM(i)<<" ";
-	}
 	return (os<<"]", os);
 }
