@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 23:11:29 by jose              #+#    #+#             */
-/*   Updated: 2024/02/10 01:37:38 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/12 14:56:53 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 #include "Character.hpp"
 
+class ICharacter;
+
 class AMateria
 {
 	protected:
@@ -28,8 +30,8 @@ class AMateria
 		AMateria(AMateria const &am);
 		AMateria	&operator=(AMateria const &am);
 		std::string	const &getType() const; // Returns the materia type
-		virtual AMateria *clone(void) const = 0;
-		virtual void use(ICharacter &target);
+		virtual AMateria	*clone(void) const = 0;
+		virtual void	use(ICharacter &target);
 };
 
 std::ostream	&operator<<(std::ostream &os, AMateria const &am);

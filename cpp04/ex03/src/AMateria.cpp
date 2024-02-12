@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 00:03:39 by jose              #+#    #+#             */
-/*   Updated: 2024/02/10 00:59:19 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/12 15:52:11 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ AMateria::AMateria(AMateria const &am)
 AMateria	&AMateria::operator=(AMateria const &am)
 {
 	this->_type = am._type;
+	return (*this);
 }
 
 std::string	const &AMateria::getType() const

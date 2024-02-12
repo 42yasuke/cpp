@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
+#    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 16:41:32 by jralph            #+#    #+#              #
-#    Updated: 2024/02/10 00:37:14 by jose             ###   ########.fr        #
+#    Updated: 2024/02/12 14:26:18 by jralph           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RM = rm -f
 
 INC = -I includes/
 
-CPP_FILES =	main.cpp AMateria.cpp Ice.cpp
+CPP_FILES =	main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 
 SRC = $(addprefix src/, $(CPP_FILES))
 

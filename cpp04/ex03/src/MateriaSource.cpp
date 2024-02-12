@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:03:46 by jose              #+#    #+#             */
-/*   Updated: 2024/02/12 11:53:25 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/12 16:54:04 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 MateriaSource::MateriaSource()
 {
-	std::cout<<"Default constructor MateriaSource called"
+	std::cout<<"Default constructor MateriaSource called"<<std::endl;
 	for (int i = 0; i < 4; i++)
 		this->materials[i] = NULL;
 }
@@ -39,7 +39,7 @@ MateriaSource	&MateriaSource::operator=(MateriaSource const &mat)
 		if (this->materials[i])
 			delete this->materials[i];
 		if (mat.materials[i])
-			this->materials[i] = charac.materials[i].clone();
+			this->materials[i] = mat.materials[i]->clone();
 		else
 			this->materials[i] = NULL;
 	}
@@ -54,25 +54,32 @@ void	MateriaSource::learnMateria(AMateria *m)
 		std::cout<<"Cannot learn more Materia (already full)"<<std::endl;
 	else
 	{
-		this->materials[i] = this->createMateria(m->getType());
-		if (this->materials[i])
+		if (m)
+		{
+			this->materials[i] = m;
 			std::cout<<"Learned a new Materia "<<m->getType()<<std::endl;
+		}
+		else
+			std::cout<<"Materia impossible to learn"<<std::endl;
 	}
 }
 
 AMateria	*MateriaSource::createMateria(std::string const & type)
 {
-	if (type == "ice")
-		return (new Ice());
-	else if (type == "cure")
-		return (new Cure());
-	return (NULL);
+	int i = -1;
+	while (++i < 4 && this->materials[i] && this->materials[i]->getType() != type);
+	if (i == 4 || !this->materials[i])
+	{
+		std::cout<<"Cannot create Materia "<<type<<std::endl;
+		return (NULL);
+	}
+	return (this->materials[i]->clone());
 }
 
 std::string	const MateriaSource::getTypeM(int idx) const
 {
-	if (this->materials[idx])
-		return (this->materials[idx].getType());
+	if (idx > -1 && idx < 4 && this->materials[idx])
+		return (this->materials[idx]->getType());
 	return ("empty");
 }
 
