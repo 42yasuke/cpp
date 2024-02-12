@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 23:10:38 by jose              #+#    #+#             */
-/*   Updated: 2024/02/12 17:09:02 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/12 17:15:16 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int main()
 	// Deep copy vs its source character
 	std::cout << "DEEP COPY VS SOURCE:" << std::endl;
 	std::cout << "-----------------------" << std::endl;
-	std::cout<<charles<<" "<<*charles<<std::endl<<charles_copy<<" "<<*charles<<std::endl;
+	std::cout<<charles<<" "<<*charles<<std::endl<<charles_copy<<" "<<*charles_copy<<std::endl;
 	tmp = src->createMateria("cure");
 	charles_copy->equip(tmp);
 	tmp = src->createMateria("ice");
