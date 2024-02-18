@@ -6,7 +6,7 @@
 #    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 16:41:32 by jralph            #+#    #+#              #
-#    Updated: 2024/02/18 20:14:36 by jralph           ###   ########.fr        #
+#    Updated: 2024/02/18 21:25:12 by jralph           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RM = rm -f
 
 INC = -I includes/
 
-CPP_FILES =	main.cpp Bureaucrat.cpp
+CPP_FILES =	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 SRC = $(addprefix src/, $(CPP_FILES))
 

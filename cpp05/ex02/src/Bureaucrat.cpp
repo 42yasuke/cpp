@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:19:46 by jose              #+#    #+#             */
-/*   Updated: 2024/02/18 20:18:13 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/18 21:28:00 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ Bureaucrat::Bureaucrat(std::string const &n, int gr) : name(n), grade(MIN_GRADE)
 	std::cout << "Constructor Bureaucrat with parameter called" << std::endl;
 	if (gr < MAX_GRADE)
 		throw GradeTooHighException();
-	else if (gr > MIN_GRADE)
+	if (gr > MIN_GRADE)
 		throw GradeTooLowException();
-	else
-		this->grade = gr;
+	this->grade = gr;
 }
 Bureaucrat::Bureaucrat(Bureaucrat const &br) : name("Unknown"), grade(MIN_GRADE)
 {
@@ -57,15 +56,24 @@ void	Bureaucrat::upGrade(int change)
 {
 	if (this->grade - change < MAX_GRADE)
 		throw GradeTooHighException();
-	else
-		this->grade -= change;
+	this->grade -= change;
 }
 void	Bureaucrat::downGrade(int change)
 {
 	if (this->grade + change > MIN_GRADE)
 		throw GradeTooLowException();
+	this->grade += change;
+}
+
+void	Bureaucrat::signForm(AForm const &f) const
+{
+	if (!f.getSigned())
+		std::cout << "Bureaucrat " << this->getName() << ", signed Form " << f.getName()<< std::endl;
 	else
-		this->grade += change;
+	{
+		std::cout << "Bureaucrat " << this->getName() << ", couldn’t sign Form" << f.getName()
+		<< " because already signed"<< std::endl;
+	}
 }
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw()
@@ -76,6 +84,11 @@ const char*	Bureaucrat::GradeTooLowException::what() const throw()
 const char*	Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return "Bureaucrat grade too high!";
+}
+
+void	Bureaucrat::executeForm(AForm const &form) const
+{
+	std::cout << "Bureaucrat " << this->name << " execute Form " << form.getName() << std::endl;
 }
 
 std::ostream	&operator<<(std::ostream &os, Bureaucrat const &br)
