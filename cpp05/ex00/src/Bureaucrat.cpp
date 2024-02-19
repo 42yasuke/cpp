@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:19:46 by jose              #+#    #+#             */
-/*   Updated: 2024/02/18 20:18:13 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/19 16:35:53 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,16 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "Destructor Bureaucrat called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string const &n, int gr) : name(n), grade(MIN_GRADE)
+Bureaucrat::Bureaucrat(std::string const &n, int gr) : name("Unknown"), grade(MIN_GRADE)
 {
 	std::cout << "Constructor Bureaucrat with parameter called" << std::endl;
 	if (gr < MAX_GRADE)
 		throw GradeTooHighException();
-	else if (gr > MIN_GRADE)
+	if (gr > MIN_GRADE)
 		throw GradeTooLowException();
-	else
-		this->grade = gr;
+	if (!n.empty())
+		name = n;
+	this->grade = gr;
 }
 Bureaucrat::Bureaucrat(Bureaucrat const &br) : name("Unknown"), grade(MIN_GRADE)
 {
