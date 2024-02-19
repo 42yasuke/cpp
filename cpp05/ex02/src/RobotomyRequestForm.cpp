@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 18:09:01 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/18 20:40:00 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/19 15:55:24 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,18 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 	return (this->isSigned = rbf.getSigned(), *this);
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const &executor)
+void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	if (this->gradeExec < executor.getGrade())
-		throw AForm::GradeTooLowException();
-	if (this->isSigned)
-	{
-		executor.executeForm(*this);
-		std::cout << "* LOUD DRILLING NOISES *" << std::endl << executor.getName();
-		std::srand(std::time(NULL));
-		if (std::rand() % 2)
-			std::cout << " has been successfully robotimized!" << std::endl;
-		else
-			std::cout << " had some problems and its robotomy failed!" << std::endl;
-	}
+	if (executor.getGrade() > this->gradeExec)
+		throw GradeTooLowException();
+	if (!this->isSigned)
+		throw UnSignedException();
+	std::cout << "* LOUD DRILLING NOISES *" << std::endl << executor.getName();
+	std::srand(std::time(NULL));
+	if (std::rand() % 2)
+		std::cout << " has been successfully robotimized!" << std::endl;
+	else
+		std::cout << " had some problems and its robotomy failed!" << std::endl;
 }
 
 std::ostream	&operator<<(std::ostream &os, RobotomyRequestForm const &rbf)

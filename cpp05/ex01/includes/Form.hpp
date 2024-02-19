@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 19:59:27 by jose              #+#    #+#             */
-/*   Updated: 2024/02/15 21:46:12 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/19 15:28:02 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Form
 		bool	getSigned(void) const;
 		int	getGds(void) const;
 		int	getGde(void) const;
-		void	beSigend(Bureaucrat const &br);
+		void	beSigned(Bureaucrat const &br);
 
 		class GradeTooHighException : public std::exception
 		{
@@ -42,6 +42,11 @@ class Form
 		};
 
 		class GradeTooLowException : public std::exception
+		{
+			virtual const char*	what() const throw();
+		};
+
+		class AlreadySignedException : public std::exception
 		{
 			virtual const char*	what() const throw();
 		};

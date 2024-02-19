@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:19:46 by jose              #+#    #+#             */
-/*   Updated: 2024/02/15 21:59:18 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/19 15:30:11 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,17 @@ void	Bureaucrat::downGrade(int change)
 	this->grade += change;
 }
 
-void	Bureaucrat::signForm(Form const &f) const
+void	Bureaucrat::signForm(Form &f) const
 {
-	if (!f.getSigned())
+	try
+	{
+		f.beSigned(*this);
 		std::cout << "Bureaucrat " << this->getName() << ", signed Form " << f.getName()<< std::endl;
-	else
+	}
+	catch(const std::exception& e)
 	{
 		std::cout << "Bureaucrat " << this->getName() << ", couldn’t sign Form" << f.getName()
-		<< " because already signed"<< std::endl;
+		<< " because " << e.what() << std::endl;
 	}
 }
 

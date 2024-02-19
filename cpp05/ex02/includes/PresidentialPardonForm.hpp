@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 19:22:29 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/18 19:26:29 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/19 15:56:22 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm(std::string const &target);
 		PresidentialPardonForm(PresidentialPardonForm const &ppf);
 		PresidentialPardonForm	&operator=(PresidentialPardonForm const &ppf);
-		virtual void	execute(Bureaucrat const &executor);
+		virtual void	execute(Bureaucrat const &executor) const;
 };
 
 std::ostream	&operator<<(std::ostream &os, PresidentialPardonForm const &ppf);

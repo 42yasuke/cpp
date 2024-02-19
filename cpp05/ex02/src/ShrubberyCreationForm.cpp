@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:31:20 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/18 20:40:09 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/19 15:55:30 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,30 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 	return (this->isSigned = shf.getSigned(), *this);
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const &executor)
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (this->gradeExec < executor.getGrade())
-		throw AForm::GradeTooLowException();
-	if (this->isSigned)
+	if (executor.getGrade() > this->gradeExec)
+		throw GradeTooLowException();
+	if (!this->isSigned)
+		throw UnSignedException();
+	std::string	file_name = this->getName() + SHF_SUFIX;
+	std::ofstream	outfile(file_name.c_str());
+	if (outfile)
 	{
-		executor.executeForm(*this);
-		std::string	file_name = this->getName() + SHF_SUFIX;
-		std::ofstream	outfile(file_name.c_str());
-		if (outfile)
-		{
-			outfile
-			<< "               ,@@@@@@@," << std::endl
-			<< "       ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl
-			<< "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o" << std::endl
-			<< "   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl
-			<< "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl
-			<< "   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'" << std::endl
-			<< "   `&%\\ ` /%&'    |.|        \\ '|8'" << std::endl
-			<< "       |o|        | |         | |" << std::endl
-			<< "       |.|        | |         | |" << std::endl
-			<< "    \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_" << std::endl;
-		}
-		else
-			std::cout << "Outfile open failled" << std::endl;
+		outfile
+		<< "               ,@@@@@@@," << std::endl
+		<< "       ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl
+		<< "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o" << std::endl
+		<< "   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl
+		<< "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl
+		<< "   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'" << std::endl
+		<< "   `&%\\ ` /%&'    |.|        \\ '|8'" << std::endl
+		<< "       |o|        | |         | |" << std::endl
+		<< "       |.|        | |         | |" << std::endl
+		<< "    \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_" << std::endl;
 	}
+	else
+		std::cout << "Outfile open failled" << std::endl;
 }
 
 std::ostream	&operator<<(std::ostream &os, ShrubberyCreationForm const &shf)

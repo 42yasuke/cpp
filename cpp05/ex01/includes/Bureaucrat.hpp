@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:16:04 by jose              #+#    #+#             */
-/*   Updated: 2024/02/15 20:28:21 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/19 15:11:45 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Bureaucrat
 		int	const& getGrade(void) const;
 		void	upGrade(int change=1);
 		void	downGrade(int change=1);
-		void	signForm(Form const &f) const;
+		void	signForm(Form &f) const;
 
 		class GradeTooLowException: public std::exception
 		{

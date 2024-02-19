@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 19:24:14 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/18 21:38:40 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/19 15:55:19 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,13 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm
 	return (this->isSigned = ppf.getSigned(), *this);
 }
 
-void	PresidentialPardonForm::execute(Bureaucrat const &executor)
+void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-	if (this->gradeExec < executor.getGrade())
-		throw AForm::GradeTooLowException();
-	if (this->isSigned)
-	{
-		executor.executeForm(*this);
-		std::cout << executor.getName() <<" has been pardoned by Zaphod Beeblebrox" << std::endl;
-	}
-	else
-		std::cout << executor.getName() <<" cannot be pardoned by Zaphod Beeblebrox" << std::endl;
+	if (executor.getGrade() > this->gradeExec)
+		throw GradeTooLowException();
+	if (!this->isSigned)
+		throw UnSignedException();
+	std::cout << executor.getName() <<" has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 
 std::ostream	&operator<<(std::ostream &os, PresidentialPardonForm const &ppf)

@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 18:06:14 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/18 19:14:15 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/19 15:56:09 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm(std::string const &target);
 		RobotomyRequestForm(RobotomyRequestForm const &shf);
 		RobotomyRequestForm	&operator=(RobotomyRequestForm const &shf);
-		virtual void	execute(Bureaucrat const &executor);
+		virtual void	execute(Bureaucrat const &executor) const;
 };
 
 std::ostream	&operator<<(std::ostream &os, RobotomyRequestForm const &shf);

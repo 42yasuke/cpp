@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:16:04 by jose              #+#    #+#             */
-/*   Updated: 2024/02/18 20:28:01 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/19 15:40:46 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Bureaucrat
 		int	const& getGrade(void) const;
 		void	upGrade(int change=1);
 		void	downGrade(int change=1);
-		void	signForm(AForm const &f) const;
+		void	signForm(AForm &f) const;
 		void	executeForm(AForm const &form) const;
 
 		class GradeTooLowException: public std::exception

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 21:15:10 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/15 21:55:11 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/19 15:37:49 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,14 @@ int	main(void)
 	{
 		std::cout << "Error: " << e.what() << std::endl;
 	}
+	Form	formula("formula", 10, 100);
+	std::cout << formula;
+	jose.signForm(formula);
+	jose.upGrade(32);
+	std::cout << jose;
 	try
 	{
-		Form	formula("formula", 10, 100);
-		std::cout << formula;
-		try
-		{
-			formula.beSigend(jose);
-		}
-		catch(std::exception& e)
-		{
-			std::cout << "Error: " << e.what() << std::endl;
-		}
-		jose.upGrade(32);
-		formula.beSigend(jose);
+		formula.beSigned(jose);
 	}
 	catch (std::exception& e)
 	{

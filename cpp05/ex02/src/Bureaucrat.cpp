@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:19:46 by jose              #+#    #+#             */
-/*   Updated: 2024/02/18 21:28:00 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/19 16:08:43 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,17 @@ void	Bureaucrat::downGrade(int change)
 	this->grade += change;
 }
 
-void	Bureaucrat::signForm(AForm const &f) const
+void	Bureaucrat::signForm(AForm &f) const
 {
-	if (!f.getSigned())
+	try
+	{
+		f.beSigned(*this);
 		std::cout << "Bureaucrat " << this->getName() << ", signed Form " << f.getName()<< std::endl;
-	else
+	}
+	catch(const std::exception& e)
 	{
 		std::cout << "Bureaucrat " << this->getName() << ", couldn’t sign Form" << f.getName()
-		<< " because already signed"<< std::endl;
+		<< " because " << e.what() << std::endl;
 	}
 }
 
@@ -88,7 +91,16 @@ const char*	Bureaucrat::GradeTooHighException::what() const throw()
 
 void	Bureaucrat::executeForm(AForm const &form) const
 {
-	std::cout << "Bureaucrat " << this->name << " execute Form " << form.getName() << std::endl;
+	try
+	{
+		form.execute(*this);
+		std::cout << "Bureaucrat " << this->name << " executed Form " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "Bureaucrat " << this->getName() << ", cannot execute Form" << form.getName()
+		<< " because " << e.what() << std::endl;
+	}
 }
 
 std::ostream	&operator<<(std::ostream &os, Bureaucrat const &br)
