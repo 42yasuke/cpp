@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 18:50:18 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/19 19:59:22 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/22 20:41:44 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,8 @@ const char *Intern::FormNotFoundException::what() const throw()
 	return "Form name not found";
 }
 
-std::ostream	&operator<<(std::ostream &os, Intern const &intern);
+std::ostream	&operator<<(std::ostream &os, Intern const &intern)
+{
+	(void)intern;
+	return (os << "Intern at your service" << std::endl, os);
+}
