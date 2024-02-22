@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 18:50:18 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/22 20:41:44 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/22 20:48:19 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,5 @@ const char *Intern::FormNotFoundException::what() const throw()
 
 std::ostream	&operator<<(std::ostream &os, Intern const &intern)
 {
-	(void)intern;
-	return (os << "Intern at your service" << std::endl, os);
+	return ((void)intern, os << "Intern at your service" << std::endl, os);
 }
