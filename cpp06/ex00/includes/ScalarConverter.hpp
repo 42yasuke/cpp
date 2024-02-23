@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 22:16:09 by jose              #+#    #+#             */
-/*   Updated: 2024/02/23 02:24:56 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/23 18:43:11 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <string>
 #include <iostream>
 #include <cstring>
+#include "limits.h"
+#include <sstream>
+#include <stdexcept>
 
 #define CHAR 0
 #define INT 1
@@ -36,6 +39,11 @@ class ScalarConverter
 		static int	getType(std::string const &str);
 	public:
 		static void	convert(std::string const &str);
+
+	class StdStringStreamException: public std::exception
+	{
+		virtual const char*	what() const throw();
+	};
 };
 
 #endif

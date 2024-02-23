@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 22:15:30 by jose              #+#    #+#             */
-/*   Updated: 2024/02/23 02:48:42 by jose             ###   ########.fr       */
+/*   Updated: 2024/02/23 19:22:37 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@ int	ScalarConverter::getType(std::string const &str)
 	{
 		if (!isdigit(str[i]))
 		{
-			if (!i && (str[i] != '+' || str[i] != '-' || str[i] != '.'))
-				return UNKNOWN;
+			if (!i)
+			{
+				if (str[i] != '+' && str[i] != '-' && str[i] != '.')
+					return UNKNOWN;
+				else
+					continue;
+			}
 			if (str[i] == '.')
 			{
 				if (!only_digit)
@@ -53,17 +58,75 @@ void	ScalarConverter::ft_char(std::string const &str)
 }
 void	ScalarConverter::ft_int(std::string const &str)
 {
-	std::cout << str << " : c un int" << std::endl;
+	double	d;
+	std::stringstream ss(str);
+	if (ss.fail())
+		throw StdStringStreamException();
+	ss >> d;
+	if (d < 0 || d > 255)
+		std::cout << "char: Impossible" << std::endl;
+	else if (d < 32 || d > 127)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: " << static_cast<char>(d) << std::endl;
+	if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX))
+		std::cout << "int: Impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(d) << std::endl;
+	std::cout << "float: " << static_cast<float>(d) << std::endl;
+	std::cout << "double: " << d << std::endl;
 }
 
 void	ScalarConverter::ft_float(std::string const &str)
 {
-	std::cout << str << " : c un float" << std::endl;
+	double	d;
+	std::stringstream ss(str);
+	if (ss.fail())
+		throw StdStringStreamException();
+	ss >> d;
+	if (!str.compare("nanf"))
+		(std::cout << "char: Impossible" << std::endl, std::cout << "int: Impossible" << std::endl);
+	else
+	{
+		if (d < 0 || d > 255)
+			std::cout << "char: Impossible" << std::endl;
+		else if (d < 32 || d > 127)
+			std::cout << "char: Non displayable" << std::endl;
+		else
+			std::cout << "char: " << static_cast<char>(d) << std::endl;
+		if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX))
+			std::cout << "int: Impossible" << std::endl;
+		else
+			std::cout << "int: " << static_cast<int>(d) << std::endl;
+	}
+	std::cout << "float: " << static_cast<float>(d) << std::endl;
+	std::cout << "double: " << d << std::endl;
 }
 
 void	ScalarConverter::ft_double(std::string const &str)
 {
-	std::cout << str << " : c un double" << std::endl;
+	double	d;
+	std::stringstream ss(str);
+	if (ss.fail())
+		throw StdStringStreamException();
+	ss >> d;
+	if (!str.compare("nan"))
+		(std::cout << "char: Impossible" << std::endl, std::cout << "int: Impossible" << std::endl);
+	else
+	{
+		if (d < 0 || d > 255)
+			std::cout << "char: Impossible" << std::endl;
+		else if (d < 32 || d > 127)
+			std::cout << "char: Non displayable" << std::endl;
+		else
+			std::cout << "char: " << static_cast<char>(d) << std::endl;
+		if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX))
+			std::cout << "int: Impossible" << std::endl;
+		else
+			std::cout << "int: " << static_cast<int>(d) << std::endl;
+	}
+	std::cout << "float: " << static_cast<float>(d) << std::endl;
+	std::cout << "double: " << d << std::endl;
 }
 
 void	ScalarConverter::ft_unknwon(std::string const &str)
@@ -77,4 +140,9 @@ void	ScalarConverter::convert(std::string const &str)
 	FctPtr ft_tabConverter[5] = {&ScalarConverter::ft_char, &ScalarConverter::ft_int, 
 		&ScalarConverter::ft_float, &ScalarConverter::ft_double, &ScalarConverter::ft_unknwon};
 	return ft_tabConverter[type](str);
+}
+
+const char*	ScalarConverter::StdStringStreamException::what() const throw()
+{
+	return "std::stringstream failded";
 }
