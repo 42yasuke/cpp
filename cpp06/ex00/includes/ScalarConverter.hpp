@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 22:16:09 by jose              #+#    #+#             */
-/*   Updated: 2024/02/23 18:43:11 by jralph           ###   ########.fr       */
+/*   Updated: 2024/02/26 12:12:47 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ class ScalarConverter
 		static void	ft_float(std::string const &str);
 		static void	ft_double(std::string const &str);
 		static void	ft_unknwon(std::string const &str);
+		static void	printFloatAndDouble(double const &d);
+		static void	printCharAndInt(double const &d);
 		static int	getType(std::string const &str);
 	public:
 		static void	convert(std::string const &str);
