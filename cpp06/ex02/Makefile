@@ -6,7 +6,7 @@
 #    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 16:41:32 by jralph            #+#    #+#              #
-#    Updated: 2024/02/27 22:23:18 by jose             ###   ########.fr        #
+#    Updated: 2024/02/27 22:19:49 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RM = rm -f
 
 INC = -I includes/
 
-CPP_FILES =	main.cpp Serializer.cpp
+CPP_FILES =	main.cpp Base.cpp
 
 SRC = $(addprefix src/, $(CPP_FILES))
 
