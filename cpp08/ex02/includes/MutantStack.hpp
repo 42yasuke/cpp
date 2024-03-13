@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:03:03 by jose              #+#    #+#             */
-/*   Updated: 2024/03/13 16:52:10 by jose             ###   ########.fr       */
+/*   Updated: 2024/03/13 17:05:23 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ template <typename T>
 class MutantStack : public std::stack<T>
 {
 	public:
-		MutantStack<T>() {};
-		MutantStack(const MutantStack& copy) : std::stack<T>(copy){*this=copy;};
+		MutantStack<T>() {}
+		MutantStack(const MutantStack& copy) : std::stack<T>(copy){}
 		virtual ~MutantStack<T>() {}
 		MutantStack<T> &operator=(const MutantStack<T> &copy)
 		{
