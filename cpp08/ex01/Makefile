@@ -6,7 +6,7 @@
 #    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 16:41:32 by jralph            #+#    #+#              #
-#    Updated: 2024/03/13 13:17:54 by jose             ###   ########.fr        #
+#    Updated: 2024/04/08 20:29:31 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = $(addprefix src/, $(CPP_FILES))
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = exec
+NAME = ex01
 
 all : $(NAME)
 

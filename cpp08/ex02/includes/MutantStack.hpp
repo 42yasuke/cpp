@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:03:03 by jose              #+#    #+#             */
-/*   Updated: 2024/03/13 17:05:23 by jose             ###   ########.fr       */
+/*   Updated: 2024/04/08 21:21:03 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,22 @@ class MutantStack : public std::stack<T>
 		typedef typename std::deque<T>::iterator	iterator;
 		iterator begin() {return this->c.begin();}
 		iterator end() {return this->c.end();}
+		void	ft_display(void)
+		{
+			iterator it = this->begin();
+			std::cout << "Mutantstack [ ";
+			while (true)
+			{
+				std::cout << *it;
+				++it;
+				if (it == this->end())
+				{
+					std::cout << " ] " << std::endl;
+					break;
+				}
+				std::cout << ", ";
+			}
+		}
 };
 
 #endif

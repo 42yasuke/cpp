@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:55:35 by jose              #+#    #+#             */
-/*   Updated: 2024/03/13 15:49:59 by jose             ###   ########.fr       */
+/*   Updated: 2024/04/08 20:14:52 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ void	Span::addNumber(int n)
 
 void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
-	if (this->list.size() >= this->N)
-		throw std::out_of_range("Error: Span already full");
 	for (std::vector<int>::iterator it = begin; it != end; it++)
+	{
+		if (this->list.size() >= this->N)
+			throw std::out_of_range("Error: Span already full");
 		addNumber(*it);
+	}
 }
 
 long long	Span::myAbs(long long num)
