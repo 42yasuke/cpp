@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 22:15:30 by jose              #+#    #+#             */
-/*   Updated: 2024/04/08 12:46:56 by jralph           ###   ########.fr       */
+/*   Updated: 2024/04/08 18:55:37 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,13 @@ void	ScalarConverter::printFloatAndDouble(double const &d)
 	double	decimal_part = d - static_cast<double>(static_cast<int>(d));
 	std::cout << "float: " << static_cast<float>(d);
 	if (decimal_part)
-		std::cout <<decimal_part << "f" << std::endl;
+		std::cout << "f" << std::endl;
 	else
 		std::cout <<".0f" << std::endl;
 	std::cout << "double: " << d;
 	if (!decimal_part)
-		std::cout << ".0" << std::endl;
+		std::cout << ".0";
+	std::cout << std::endl;
 }
 
 void	ScalarConverter::ft_char(std::string const &str)
