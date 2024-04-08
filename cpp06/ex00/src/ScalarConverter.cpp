@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 22:15:30 by jose              #+#    #+#             */
-/*   Updated: 2024/02/26 12:12:37 by jose             ###   ########.fr       */
+/*   Updated: 2024/04/08 09:03:56 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	ScalarConverter::ft_int(std::string const &str)
 	if (ss.fail())
 		throw StdStringStreamException();
 	ss >> d;
-	printChatAndInt(d);
+	printCharAndInt(d);
 	printFloatAndDouble(d);
 }
 
@@ -104,7 +104,7 @@ void	ScalarConverter::ft_float(std::string const &str)
 	if (!str.compare("nanf"))
 		(std::cout << "char: Impossible" << std::endl, std::cout << "int: Impossible" << std::endl);
 	else
-		printChatAndInt(d);
+		printCharAndInt(d);
 	printFloatAndDouble(d);
 }
 
@@ -118,7 +118,7 @@ void	ScalarConverter::ft_double(std::string const &str)
 	if (!str.compare("nan"))
 		(std::cout << "char: Impossible" << std::endl, std::cout << "int: Impossible" << std::endl);
 	else
-		printChatAndInt(d);
+		printCharAndInt(d);
 	printFloatAndDouble(d);
 }
 

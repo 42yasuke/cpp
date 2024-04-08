@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 21:15:10 by jralph            #+#    #+#             */
-/*   Updated: 2024/02/26 13:38:27 by jose             ###   ########.fr       */
+/*   Updated: 2024/04/08 09:10:24 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(void)
 	Data	*obj = new Data();
 	std::cout << "> Data object created\n" << std::endl;
 
-	obj->str = "cette exercice est vraiment chelou";
+	obj->str = "cet exercice est vraiment chelou";
 	std::cout << "Data string: " << obj->str << std::endl;
 	std::cout << "Data Address: " << obj << std::endl;
 
