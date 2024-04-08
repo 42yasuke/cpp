@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 22:16:09 by jose              #+#    #+#             */
-/*   Updated: 2024/02/26 12:12:47 by jose             ###   ########.fr       */
+/*   Updated: 2024/04/08 11:48:28 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef void (*FctPtr)(std::string const&);
 class ScalarConverter
 {
 	private:
+		ScalarConverter();
+		ScalarConverter(ScalarConverter const &sca);
+		ScalarConverter	&operator=(ScalarConverter const &sca);
 		static void	ft_char(std::string const &str);
 		static void	ft_int(std::string const &str);
 		static void	ft_float(std::string const &str);
@@ -40,6 +43,7 @@ class ScalarConverter
 		static void	printCharAndInt(double const &d);
 		static int	getType(std::string const &str);
 	public:
+		~ScalarConverter();
 		static void	convert(std::string const &str);
 
 	class StdStringStreamException: public std::exception
@@ -47,5 +51,7 @@ class ScalarConverter
 		virtual const char*	what() const throw();
 	};
 };
+
+std::ostream	&operator<<(std::ostream &os, ScalarConverter const &sca);
 
 #endif

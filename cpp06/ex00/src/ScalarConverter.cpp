@@ -6,11 +6,28 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 22:15:30 by jose              #+#    #+#             */
-/*   Updated: 2024/04/08 09:03:56 by jralph           ###   ########.fr       */
+/*   Updated: 2024/04/08 12:46:56 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+ScalarConverter::ScalarConverter()
+{
+}
+
+ScalarConverter::~ScalarConverter()
+{
+}
+
+ScalarConverter::ScalarConverter(ScalarConverter const &sca)
+{
+	(void)sca;
+}
+ScalarConverter	&ScalarConverter::operator=(ScalarConverter const &sca)
+{
+	return ((void)sca, *this);
+}
 
 int	ScalarConverter::getType(std::string const &str)
 {
@@ -80,8 +97,8 @@ void	ScalarConverter::ft_char(std::string const &str)
 	else
 		std::cout << "char: " << c << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
-	std::cout << "float: " << static_cast<float>(c) << std::endl;
-	std::cout << "double: " << static_cast<double>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << ".0"<< std::endl;
 }
 void	ScalarConverter::ft_int(std::string const &str)
 {
@@ -101,10 +118,7 @@ void	ScalarConverter::ft_float(std::string const &str)
 	if (ss.fail())
 		throw StdStringStreamException();
 	ss >> d;
-	if (!str.compare("nanf"))
-		(std::cout << "char: Impossible" << std::endl, std::cout << "int: Impossible" << std::endl);
-	else
-		printCharAndInt(d);
+	printCharAndInt(d);
 	printFloatAndDouble(d);
 }
 
@@ -114,17 +128,24 @@ void	ScalarConverter::ft_double(std::string const &str)
 	std::stringstream ss(str);
 	if (ss.fail())
 		throw StdStringStreamException();
-	ss >> d;
-	if (!str.compare("nan"))
-		(std::cout << "char: Impossible" << std::endl, std::cout << "int: Impossible" << std::endl);
-	else
-		printCharAndInt(d);
+	ss >> d;	
+	printCharAndInt(d);
 	printFloatAndDouble(d);
 }
 
 void	ScalarConverter::ft_unknwon(std::string const &str)
 {
-	std::cout << "Error: "<< str << " : type unknown" << std::endl;
+	if (!str.compare("nan") || !str.compare("nanf") || !str.compare("+inf")
+		 || !str.compare("-inf") || !str.compare("+inff") || !str.compare("-inff"))
+	{
+		(std::cout << "char: Impossible" << std::endl, std::cout << "int: Impossible" << std::endl);
+		if (str[0] == 'n')
+			(std::cout << "float: nanf" << std::endl, std::cout << "double: nan" << std::endl);
+		else
+			(std::cout << "float: " << str[0] << "inff" << std::endl, std::cout << "double: " << str[0] << "inf" << std::endl);
+	}
+	else
+		std::cout << "Error: "<< str << " : type unknown" << std::endl;
 }
 
 void	ScalarConverter::convert(std::string const &str)
@@ -138,4 +159,9 @@ void	ScalarConverter::convert(std::string const &str)
 const char*	ScalarConverter::StdStringStreamException::what() const throw()
 {
 	return "std::stringstream failded";
+}
+
+std::ostream	&operator<<(std::ostream &os, ScalarConverter const &sca)
+{
+	return ((void)sca, os);
 }

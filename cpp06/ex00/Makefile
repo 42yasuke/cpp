@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
+#    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 16:41:32 by jralph            #+#    #+#              #
-#    Updated: 2024/02/22 22:43:02 by jose             ###   ########.fr        #
+#    Updated: 2024/04/08 12:07:21 by jralph           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = $(addprefix src/, $(CPP_FILES))
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = exec
+NAME = convert
 
 all : $(NAME)
 
