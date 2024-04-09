@@ -3,20 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 21:15:10 by jralph            #+#    #+#             */
-/*   Updated: 2024/03/13 11:19:59 by jose             ###   ########.fr       */
+/*   Updated: 2024/04/09 10:48:43 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
+#include "BitcoinExchange.hpp"
 
-int	main(void)
+int main(int ac, char** av) 
 {
-	std::vector<int> vec;
-	for (int i = 0; i < 5; i++)
-		vec.push_back(i);
-	easyfind(vec, 3);
-	easyfind(vec, 6);
+	if (ac != 2)
+		return (std::cout << "Error: bad usage" << std::endl, 1);
+	try
+	{
+		BitcoinExchange bitcoinExchange;
+		bitcoinExchange.ft_treatmentInputFile(av[1]);
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	return 0;
 }
