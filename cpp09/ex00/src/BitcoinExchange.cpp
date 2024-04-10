@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 00:50:08 by jose              #+#    #+#             */
-/*   Updated: 2024/04/09 10:52:33 by jralph           ###   ########.fr       */
+/*   Updated: 2024/04/10 15:59:21 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &btc)
 	return ((void)btc, *this);
 }
 
-bool	BitcoinExchange::ft_isAGoodDate(std::string &date)
+bool	BitcoinExchange::ft_isAGoodDate(std::string &date) const
 {
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
 		return false;
@@ -66,14 +66,30 @@ bool	BitcoinExchange::ft_isAGoodDate(std::string &date)
 
 	if (year < 2009 || year > 2023)
 		return false;
-	if (month < 1 || month > 12)
-		return false;
-	if (day < 1 || day > 31)
-		return false;
+	switch (month)
+	{
+		case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+			if (day < 1 || day > 31)
+				return false;
+			break;
+		case 4: case 6: case 9: case 11:
+			if (day < 1 || day > 30)
+				return false;
+			break;
+		case 2:
+			if (day < 1 || day > 29)
+				return false;
+			if (day == 29 && !((year % 4 == 0 && year % 100 != 0) || year % 400 == 0))
+				return false;
+			break;
+		default:
+			return false;
+			break;
+	}
 	return true;
 }
 
-bool	BitcoinExchange::ft_isAGoodPrice(std::string &price)
+bool	BitcoinExchange::ft_isAGoodPrice(std::string &price) const
 {
 	if (price.size() == 0 || price.find(".") != price.rfind("."))
 		return false;
