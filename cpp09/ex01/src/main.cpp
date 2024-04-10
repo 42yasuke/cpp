@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 21:15:10 by jralph            #+#    #+#             */
-/*   Updated: 2024/04/09 20:12:45 by jralph           ###   ########.fr       */
+/*   Updated: 2024/04/10 10:59:20 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main(int ac, char** av)
 	{
 		std::string	const str(av[1]);
 		RPN rpn(str);
+		rpn.ft_display();
 	}
 	catch (const std::exception& e)
 	{

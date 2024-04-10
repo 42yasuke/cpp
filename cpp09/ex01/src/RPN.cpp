@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 00:50:08 by jose              #+#    #+#             */
-/*   Updated: 2024/04/09 20:11:35 by jralph           ###   ########.fr       */
+/*   Updated: 2024/04/10 12:09:09 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,64 +32,61 @@ RPN::RPN(std::string const &str)
 {
 	if (!this->ft_isAgoodArg(str))
 		throw std::invalid_argument("Error: invalid argument");
-	std::string	rev = this->ft_reverseIt(str);
-	for(size_t i = 0; i < rev.length(); i++)
+	for(size_t i = 0; i < str.length(); i++)
 	{
-		if (rev[i] != ' ')
+		if (str[i] != ' ')
 		{
-			if (isdigit(rev[i]))
-				this->myStack.push(rev[i] - '0');
+			if (isdigit(str[i]))
+				this->myStack.push(str[i] - '0');
 			else
-				this->myStack.push(rev[i]);
+			{
+				int tmp = this->myStack.top();
+				this->myStack.pop();
+				switch (str[i])
+				{
+					case '+':
+						tmp += this->myStack.top();
+						break;
+					case '-':
+						tmp = this->myStack.top() - tmp;
+						break;
+					case '*':
+						tmp *= this->myStack.top();
+						break;
+					default:
+						if (!tmp)
+							throw std::logic_error("Error: Division by zero is forbidden");
+						tmp = this->myStack.top() / tmp;
+						break;
+				}
+				this->myStack.pop();
+				this->myStack.push(tmp);
+			}
 		}
 	}
-	int	res = this->myStack.top();
-	int	tmp = 0;
-	this->myStack.pop();
-	while (!this->myStack.empty())
-	{
-		tmp = this->myStack.top();
-		this->myStack.pop();
-		switch (this->myStack.top())
-		{
-			case '+':
-				res += tmp;
-				break;
-			case '-':
-				res -= tmp;
-				break;
-			case '*':
-				res *= tmp;
-				break;
-			default:
-				if (!tmp)
-					throw std::logic_error("Error: Division by zero is forbidden");
-				res /= tmp;
-				break;
-		}
-		this->myStack.pop();
-	}
-	std::cout << res << std::endl;
 }
 
 bool	RPN::ft_isAgoodArg(std::string const &str) const
 {
-	if (!isdigit(str[0]))
-		return false;
-	if (str.size() > 1 && (str[1] != ' ' || str.size() < 5))
-		return false;
-	std::string	copy(str);
-	copy = copy.substr(2);
-	
-	while (copy.size() > 2)
+	int	nb_int = 0;
+	int	nb_op = 0;
+	for (size_t i = 0; i < str.size(); i++)
 	{
-		if (!isdigit(copy[0]) || copy[1] != ' ' || !this->ft_isAnOperation(copy[2]))
-			return false;
-		copy = copy.substr(3);
-		if (copy[0] == ' ')
-			copy = copy.substr(1);
+		if (str[i] != ' ')
+		{
+			if (isdigit(str[i]))
+				nb_int++;
+			else if (this->ft_isAnOperation(str[i]))
+			{
+				nb_op++;
+				if (nb_int < nb_op + 1)
+					return false;
+			}
+			else
+				return false;
+		}
 	}
-	return true;
+	return (nb_int == nb_op + 1);
 }
 
 bool	RPN::ft_isAnOperation(char c) const
@@ -106,6 +103,7 @@ std::string	RPN::ft_reverseIt(std::string const &str) const
 	return copy;
 }
 
-void	RPN::ft_display(void)
+void	RPN::ft_display(void) const
 {
+	std::cout << this->myStack.top() << std::endl;
 }
