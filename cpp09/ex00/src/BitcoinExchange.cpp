@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 00:50:08 by jose              #+#    #+#             */
-/*   Updated: 2024/04/10 15:59:21 by jralph           ###   ########.fr       */
+/*   Updated: 2024/04/11 13:22:31 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,11 @@ void	BitcoinExchange::ft_treatmentInputFile(const std::string &inputFile)
 	std::ifstream input_strm(inputFile.c_str());
 
 	if (!input_strm)
-		throw std::runtime_error("Error: input.txt open failed");
+		throw std::runtime_error("Error: input file open failed");
 	std::string line;
 	std::getline(input_strm, line);
 	if (line.compare("date | value") != 0)
-		throw std::runtime_error("Error: First line of input.txt is wrong");
+		throw std::runtime_error("Error: First line of input file is wrong");
 
 	while (std::getline(input_strm, line))
 	{
